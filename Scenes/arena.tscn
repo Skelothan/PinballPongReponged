@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0uxhpt30u2gu"]
+[gd_scene load_steps=10 format=3 uid="uid://c0uxhpt30u2gu"]
 
 [ext_resource type="PackedScene" uid="uid://ob0lbhmds5ll" path="res://Objects/Paddle.tscn" id="1_nnts3"]
-[ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/plain_white_texture.tres" id="2_1v1nj"]
+[ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/PlainWhite_Texture.tres" id="2_1v1nj"]
 [ext_resource type="PackedScene" uid="uid://cgunkbo2tyaa6" path="res://Objects/Ball.tscn" id="3_kcpg1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbtuc"]
@@ -14,33 +14,43 @@ size = Vector2(20, 196)
 
 [sub_resource type="BoxMesh" id="BoxMesh_n068f"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_1v1nj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csrox"]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="P1_Paddle" parent="." instance=ExtResource("1_nnts3")]
 position = Vector2(-250, 250)
 scale = Vector2(3, 3)
+move_speed = 600
+flip_speed = 300
 left_bound = -400.0
 right_bound = -100.0
 
 [node name="P2_Paddle" parent="." instance=ExtResource("1_nnts3")]
 position = Vector2(250, 250)
 scale = Vector2(3, 3)
+move_speed = 600
+flip_speed = 300
 player = 2
 left_bound = 100.0
 right_bound = 400.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -75)
+zoom = Vector2(0.8, 0.8)
 
 [node name="Net" type="Node2D" parent="."]
 position = Vector2(0, 200)
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Net"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Net"]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Net/RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Net/CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_pbtuc")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Net/RigidBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Net/CharacterBody2D"]
 position = Vector2(0, 107)
 shape = SubResource("RectangleShape2D_yokb4")
 
@@ -57,3 +67,70 @@ texture = ExtResource("2_1v1nj")
 
 [node name="Ball" parent="." instance=ExtResource("3_kcpg1")]
 position = Vector2(-247, -4)
+
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(0, 200)
+
+[node name="LeftSideWall" type="Node2D" parent="Walls"]
+position = Vector2(-625, -175)
+rotation = 1.309
+scale = Vector2(27, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/LeftSideWall"]
+scale = Vector2(20, 20)
+mesh = SubResource("BoxMesh_1v1nj")
+texture = ExtResource("2_1v1nj")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Walls/LeftSideWall"]
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftSideWall/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_csrox")
+
+[node name="LeftCeiling" type="Node2D" parent="Walls"]
+position = Vector2(-351.25, -525)
+rotation = -0.261799
+scale = Vector2(36.5, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/LeftCeiling"]
+scale = Vector2(20, 20)
+mesh = SubResource("BoxMesh_1v1nj")
+texture = ExtResource("2_1v1nj")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Walls/LeftCeiling"]
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftCeiling/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_csrox")
+
+[node name="RightCeiling" type="Node2D" parent="Walls"]
+position = Vector2(351.25, -525)
+rotation = 0.261799
+scale = Vector2(36.5, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/RightCeiling"]
+scale = Vector2(20, 20)
+mesh = SubResource("BoxMesh_1v1nj")
+texture = ExtResource("2_1v1nj")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Walls/RightCeiling"]
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightCeiling/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_csrox")
+
+[node name="RightSideWall" type="Node2D" parent="Walls"]
+position = Vector2(625, -175)
+rotation = -1.309
+scale = Vector2(27, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/RightSideWall"]
+scale = Vector2(20, 20)
+mesh = SubResource("BoxMesh_1v1nj")
+texture = ExtResource("2_1v1nj")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Walls/RightSideWall"]
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightSideWall/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_csrox")

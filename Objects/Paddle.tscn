@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://ob0lbhmds5ll"]
 
 [ext_resource type="Script" uid="uid://cg0p2quhgpyit" path="res://Objects/paddle.gd" id="1_6vb5h"]
-[ext_resource type="Texture2D" uid="uid://um1xqr0vgw0y" path="res://Textures/Paddle_P1_L_texture.tres" id="2_glji8"]
-[ext_resource type="Gradient" uid="uid://nv1745k5nnaw" path="res://Textures/Paddle_P1_R_gradient.tres" id="3_glji8"]
+[ext_resource type="Texture2D" uid="uid://um1xqr0vgw0y" path="res://Textures/PaddleP1L_Texture.tres" id="2_glji8"]
+[ext_resource type="Gradient" uid="uid://nv1745k5nnaw" path="res://Textures/PaddleP1R_Gradient.tres" id="3_glji8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjhxm"]
 size = Vector2(27, 24)
