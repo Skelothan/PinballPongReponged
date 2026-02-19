@@ -1,0 +1,6 @@
+[gd_resource type="GradientTexture1D" load_steps=2 format=3 uid="uid://duir510p7sfve"]
+
+[ext_resource type="Gradient" uid="uid://cfjbsyb65n30m" path="res://Textures/Paddle_P2_L_gradient.tres" id="1_rah3f"]
+
+[resource]
+gradient = ExtResource("1_rah3f")

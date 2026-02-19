@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0uxhpt30u2gu"]
+
+[ext_resource type="PackedScene" uid="uid://ob0lbhmds5ll" path="res://Objects/Paddle.tscn" id="1_nnts3"]
+[ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/plain_white_texture.tres" id="2_1v1nj"]
+[ext_resource type="PackedScene" uid="uid://cgunkbo2tyaa6" path="res://Objects/Ball.tscn" id="3_kcpg1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbtuc"]
+height = 38.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yokb4"]
+size = Vector2(20, 196)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_35c7g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n068f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="P1_Paddle" parent="." instance=ExtResource("1_nnts3")]
+position = Vector2(-250, 250)
+scale = Vector2(3, 3)
+left_bound = -400.0
+right_bound = -100.0
+
+[node name="P2_Paddle" parent="." instance=ExtResource("1_nnts3")]
+position = Vector2(250, 250)
+scale = Vector2(3, 3)
+player = 2
+left_bound = 100.0
+right_bound = 400.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Net" type="Node2D" parent="."]
+position = Vector2(0, 200)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Net"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Net/RigidBody2D"]
+shape = SubResource("CapsuleShape2D_pbtuc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Net/RigidBody2D"]
+position = Vector2(0, 107)
+shape = SubResource("RectangleShape2D_yokb4")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Net"]
+position = Vector2(0, 1)
+scale = Vector2(20, 20)
+mesh = SubResource("CapsuleMesh_35c7g")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Net"]
+position = Vector2(4.76837e-07, 107)
+scale = Vector2(20, 196)
+mesh = SubResource("BoxMesh_n068f")
+texture = ExtResource("2_1v1nj")
+
+[node name="Ball" parent="." instance=ExtResource("3_kcpg1")]
+position = Vector2(-247, -4)
