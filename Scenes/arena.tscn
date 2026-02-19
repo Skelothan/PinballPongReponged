@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0uxhpt30u2gu"]
+[gd_scene load_steps=14 format=3 uid="uid://c0uxhpt30u2gu"]
 
 [ext_resource type="Script" uid="uid://dm04dnkydmo1c" path="res://Scenes/GameManager.gd" id="1_1v1nj"]
 [ext_resource type="PackedScene" uid="uid://ob0lbhmds5ll" path="res://Objects/Paddle.tscn" id="1_nnts3"]
 [ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/PlainWhite_Texture.tres" id="2_1v1nj"]
+[ext_resource type="PhysicsMaterial" uid="uid://bvsbech3efyyx" path="res://PhysicsMaterials/Net_PhyMat.tres" id="2_kcpg1"]
 [ext_resource type="PackedScene" uid="uid://cgunkbo2tyaa6" path="res://Objects/Ball.tscn" id="3_kcpg1"]
+[ext_resource type="PhysicsMaterial" uid="uid://dlnub6vjg6dpk" path="res://PhysicsMaterials/Bouncy_PhyMat.tres" id="5_kcpg1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbtuc"]
 height = 38.0
@@ -48,8 +50,9 @@ zoom = Vector2(1.2, 1.2)
 [node name="Net" type="Node2D" parent="."]
 position = Vector2(0, 200)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Net"]
+[node name="CharacterBody2D" type="StaticBody2D" parent="Net"]
 collision_mask = 2
+physics_material_override = ExtResource("2_kcpg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Net/CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_pbtuc")
@@ -85,8 +88,8 @@ scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_1v1nj")
 texture = ExtResource("2_1v1nj")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Walls/LeftSideWall"]
-motion_mode = 1
+[node name="CharacterBody2D" type="StaticBody2D" parent="Walls/LeftSideWall"]
+physics_material_override = ExtResource("5_kcpg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftSideWall/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_csrox")
@@ -101,8 +104,8 @@ scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_1v1nj")
 texture = ExtResource("2_1v1nj")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Walls/LeftCeiling"]
-motion_mode = 1
+[node name="CharacterBody2D" type="StaticBody2D" parent="Walls/LeftCeiling"]
+physics_material_override = ExtResource("5_kcpg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftCeiling/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_csrox")
@@ -117,8 +120,8 @@ scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_1v1nj")
 texture = ExtResource("2_1v1nj")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Walls/RightCeiling"]
-motion_mode = 1
+[node name="CharacterBody2D" type="StaticBody2D" parent="Walls/RightCeiling"]
+physics_material_override = ExtResource("5_kcpg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightCeiling/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_csrox")
@@ -133,15 +136,16 @@ scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_1v1nj")
 texture = ExtResource("2_1v1nj")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Walls/RightSideWall"]
-motion_mode = 1
+[node name="CharacterBody2D" type="StaticBody2D" parent="Walls/RightSideWall"]
+physics_material_override = ExtResource("5_kcpg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightSideWall/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_csrox")
 
-[node name="DeathBarrier" type="CharacterBody2D" parent="."]
+[node name="DeathBarrier" type="StaticBody2D" parent="."]
 position = Vector2(0, 1000)
 scale = Vector2(1000, 50)
+physics_material_override = ExtResource("2_kcpg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBarrier"]
 shape = SubResource("RectangleShape2D_1v1nj")
