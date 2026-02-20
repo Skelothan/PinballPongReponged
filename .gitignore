@@ -14,3 +14,5 @@ export_credentials.cfg
 # OS system files
 .DS_Store
 desktop.ini
+*export_templates.tpz
+Builds/*
