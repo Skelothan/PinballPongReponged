@@ -3,15 +3,25 @@ extends RigidBody2D
 @export var gravity = 1.0
 var gravity_vector = Vector2(0, gravity)
 
-var reset_flag = false
 
 func _integrate_forces(state):
-	if reset_flag:
-		state.linear_velocity = Vector2.ZERO
-		state.angular_velocity = 0
-		reset_flag = false
-	else:
-		self.apply_force(gravity_vector)
+	self.apply_force(gravity_vector)
+		
 
-func reset():
-	reset_flag = true
+
+func reset(x: float, y: float):
+	PhysicsServer2D.body_set_state(
+		self.get_rid(),
+		PhysicsServer2D.BODY_STATE_TRANSFORM,
+		Transform2D.IDENTITY.translated(Vector2(x, y))
+	)
+	PhysicsServer2D.body_set_state(
+		self.get_rid(),
+		PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY,
+		Transform2D.IDENTITY.translated(Vector2(0, 0))
+	)
+	PhysicsServer2D.body_set_state(
+		self.get_rid(),
+		PhysicsServer2D.BODY_STATE_ANGULAR_VELOCITY,
+		Transform2D.IDENTITY.translated(Vector2(0, 0))
+	)

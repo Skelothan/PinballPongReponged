@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbbucpis28ynt"]
+
+[ext_resource type="Script" uid="uid://d3cl3wwao0mlu" path="res://Scenes/death_barrier.gd" id="1_e53qa"]
+[ext_resource type="Texture2D" uid="uid://cepbcwe4pdde0" path="res://Textures/TransparentRed_Texture.tres" id="2_kvgtv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v1nj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_stc3i"]
+
+[node name="DeathBarrier" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_e53qa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1v1nj")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(400, 20)
+mesh = SubResource("BoxMesh_stc3i")
+texture = ExtResource("2_kvgtv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

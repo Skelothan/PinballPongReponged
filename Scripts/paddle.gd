@@ -23,8 +23,7 @@ var right_flipper_rotation_direction = 0
 func _ready():
 	left_flipper = get_node("LeftFlipper")
 	right_flipper = get_node("RightFlipper")
-	
-	print(left_flipper)
+
 
 func _input(event):
 	if player == 1:
