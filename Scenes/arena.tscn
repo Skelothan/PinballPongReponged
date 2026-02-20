@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0uxhpt30u2gu"]
+[gd_scene load_steps=16 format=3 uid="uid://c0uxhpt30u2gu"]
 
-[ext_resource type="Script" uid="uid://dm04dnkydmo1c" path="res://Scenes/GameManager.gd" id="1_1v1nj"]
+[ext_resource type="Script" uid="uid://dm04dnkydmo1c" path="res://Scripts/GameManager.gd" id="1_1v1nj"]
 [ext_resource type="PackedScene" uid="uid://ob0lbhmds5ll" path="res://Objects/Paddle.tscn" id="1_nnts3"]
 [ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/PlainWhite_Texture.tres" id="2_1v1nj"]
 [ext_resource type="PhysicsMaterial" uid="uid://bvsbech3efyyx" path="res://PhysicsMaterials/Net_PhyMat.tres" id="2_kcpg1"]
 [ext_resource type="PackedScene" uid="uid://cgunkbo2tyaa6" path="res://Objects/Ball.tscn" id="3_kcpg1"]
 [ext_resource type="PhysicsMaterial" uid="uid://dlnub6vjg6dpk" path="res://PhysicsMaterials/Bouncy_PhyMat.tres" id="5_kcpg1"]
+[ext_resource type="Script" uid="uid://cyi5lpv2dbhu7" path="res://Scripts/HUD.gd" id="7_cs8mb"]
+[ext_resource type="FontFile" uid="uid://co71jcuy2guxq" path="res://Fonts/AtkinsonHyperlegibleNext-VariableFont_wght.ttf" id="8_xrytr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbtuc"]
 height = 38.0
@@ -149,3 +151,29 @@ physics_material_override = ExtResource("2_kcpg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBarrier"]
 shape = SubResource("RectangleShape2D_1v1nj")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("7_cs8mb")
+
+[node name="P1_Score" type="Label" parent="HUD"]
+offset_left = 100.0
+offset_top = 75.0
+offset_right = 141.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("8_xrytr")
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="P2_Score" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -141.0
+offset_top = 75.0
+offset_right = -100.0
+offset_bottom = 159.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("8_xrytr")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 2

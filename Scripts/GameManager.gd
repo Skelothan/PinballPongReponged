@@ -21,16 +21,21 @@ func reset_game():
 	p1_score = 0
 	p2_score = 0
 	
+	$HUD.update_score(1, p1_score)
+	$HUD.update_score(2, p2_score)
+	
 	reset_round()
 
 
 func give_point(player: int):
 	if player == 1:
 		p1_score += 1
+		$HUD.update_score(1, p1_score)
 		await wait(reset_round_delay)
 		reset_round(2)
 	elif player == 2:
 		p2_score += 1
+		$HUD.update_score(2, p2_score)
 		await wait(reset_round_delay)
 		reset_round(1)	
 
