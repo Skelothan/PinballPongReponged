@@ -10,3 +10,7 @@ export_credentials.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
+
+# OS system files
+.DS_Store
+desktop.ini
