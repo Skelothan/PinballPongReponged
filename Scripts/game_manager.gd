@@ -8,6 +8,11 @@ var p2_score = 0
 @export var reset_round_delay = 4
 
 
+func _input(event):
+	if event.is_action_pressed("reset"):
+		reset_game()
+
+
 func _ready():
 	reset_round()
 

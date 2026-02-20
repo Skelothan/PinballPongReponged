@@ -76,7 +76,7 @@ mesh = SubResource("BoxMesh_n068f")
 texture = ExtResource("4_1phrr")
 
 [node name="Ball" parent="." groups=["Ball"] instance=ExtResource("5_kogr8")]
-position = Vector2(250, -4)
+position = Vector2(250, 2004)
 
 [node name="Walls" type="Node2D" parent="."]
 position = Vector2(0, 200)
