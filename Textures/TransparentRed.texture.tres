@@ -1,6 +1,6 @@
 [gd_resource type="GradientTexture1D" load_steps=2 format=3 uid="uid://cepbcwe4pdde0"]
 
-[ext_resource type="Gradient" uid="uid://dpween1e5q0ty" path="res://Textures/TransparentRed_Gradient.tres" id="1_ipvob"]
+[ext_resource type="Gradient" uid="uid://dpween1e5q0ty" path="res://Textures/TransparentRed.gradient.tres" id="1_ipvob"]
 
 [resource]
 gradient = ExtResource("1_ipvob")

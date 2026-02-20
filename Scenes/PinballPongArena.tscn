@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://c0uxhpt30u2gu"]
 
-[ext_resource type="Script" uid="uid://dm04dnkydmo1c" path="res://Scripts/GameManager.gd" id="1_1v1nj"]
-[ext_resource type="PackedScene" uid="uid://ob0lbhmds5ll" path="res://Objects/Paddle.tscn" id="1_nnts3"]
-[ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/PlainWhite_Texture.tres" id="2_1v1nj"]
-[ext_resource type="PhysicsMaterial" uid="uid://bvsbech3efyyx" path="res://PhysicsMaterials/Net_PhyMat.tres" id="2_kcpg1"]
-[ext_resource type="PackedScene" uid="uid://cgunkbo2tyaa6" path="res://Objects/Ball.tscn" id="3_kcpg1"]
-[ext_resource type="PhysicsMaterial" uid="uid://dlnub6vjg6dpk" path="res://PhysicsMaterials/Bouncy_PhyMat.tres" id="5_kcpg1"]
-[ext_resource type="Script" uid="uid://cyi5lpv2dbhu7" path="res://Scripts/HUD.gd" id="7_cs8mb"]
-[ext_resource type="PackedScene" uid="uid://cbbucpis28ynt" path="res://Objects/DeathBarrier.tscn" id="7_xrytr"]
-[ext_resource type="FontFile" uid="uid://co71jcuy2guxq" path="res://Fonts/AtkinsonHyperlegibleNext-VariableFont_wght.ttf" id="8_xrytr"]
+[ext_resource type="Script" uid="uid://dm04dnkydmo1c" path="res://Scripts/game_manager.gd" id="1_to8ph"]
+[ext_resource type="PackedScene" uid="uid://ob0lbhmds5ll" path="res://Objects/Paddle.tscn" id="2_32u68"]
+[ext_resource type="PhysicsMaterial" uid="uid://bvsbech3efyyx" path="res://PhysicsMaterials/Net.phymat.tres" id="3_ydwt1"]
+[ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/PlainWhite.texture.tres" id="4_1phrr"]
+[ext_resource type="PackedScene" uid="uid://cgunkbo2tyaa6" path="res://Objects/Ball.tscn" id="5_kogr8"]
+[ext_resource type="PhysicsMaterial" uid="uid://dlnub6vjg6dpk" path="res://PhysicsMaterials/Bouncy.phymat.tres" id="6_q4yph"]
+[ext_resource type="PackedScene" uid="uid://cbbucpis28ynt" path="res://Objects/DeathBarrier.tscn" id="7_g8vyv"]
+[ext_resource type="Script" uid="uid://cyi5lpv2dbhu7" path="res://Scripts/hud.gd" id="8_oah82"]
+[ext_resource type="FontFile" uid="uid://co71jcuy2guxq" path="res://Fonts/AtkinsonHyperlegibleNext-VariableFont_wght.ttf" id="9_w2nuc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbtuc"]
 height = 38.0
@@ -25,9 +25,9 @@ size = Vector2(20, 1351)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csrox"]
 
 [node name="PinballPongArena" type="Node2D"]
-script = ExtResource("1_1v1nj")
+script = ExtResource("1_to8ph")
 
-[node name="P1_Paddle" parent="." instance=ExtResource("1_nnts3")]
+[node name="P1_Paddle" parent="." instance=ExtResource("2_32u68")]
 position = Vector2(-250, 250)
 scale = Vector2(3, 3)
 move_speed = 600
@@ -35,7 +35,7 @@ flip_speed = 300
 left_bound = -450.0
 right_bound = -100.0
 
-[node name="P2_Paddle" parent="." instance=ExtResource("1_nnts3")]
+[node name="P2_Paddle" parent="." instance=ExtResource("2_32u68")]
 position = Vector2(250, 250)
 scale = Vector2(3, 3)
 move_speed = 600
@@ -53,7 +53,7 @@ position = Vector2(0, 200)
 
 [node name="CharacterBody2D" type="StaticBody2D" parent="Net"]
 collision_mask = 2
-physics_material_override = ExtResource("2_kcpg1")
+physics_material_override = ExtResource("3_ydwt1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Net/CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_pbtuc")
@@ -71,9 +71,9 @@ mesh = SubResource("CapsuleMesh_35c7g")
 position = Vector2(4.76837e-07, 107)
 scale = Vector2(20, 196)
 mesh = SubResource("BoxMesh_n068f")
-texture = ExtResource("2_1v1nj")
+texture = ExtResource("4_1phrr")
 
-[node name="Ball" parent="." instance=ExtResource("3_kcpg1")]
+[node name="Ball" parent="." instance=ExtResource("5_kogr8")]
 position = Vector2(250, -4)
 
 [node name="Walls" type="Node2D" parent="."]
@@ -87,10 +87,10 @@ scale = Vector2(27, 1)
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/LeftSideWall"]
 scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_1v1nj")
-texture = ExtResource("2_1v1nj")
+texture = ExtResource("4_1phrr")
 
 [node name="CharacterBody2D" type="StaticBody2D" parent="Walls/LeftSideWall"]
-physics_material_override = ExtResource("5_kcpg1")
+physics_material_override = ExtResource("6_q4yph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftSideWall/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_csrox")
@@ -103,10 +103,10 @@ scale = Vector2(36.5, 1)
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/LeftCeiling"]
 scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_1v1nj")
-texture = ExtResource("2_1v1nj")
+texture = ExtResource("4_1phrr")
 
 [node name="CharacterBody2D" type="StaticBody2D" parent="Walls/LeftCeiling"]
-physics_material_override = ExtResource("5_kcpg1")
+physics_material_override = ExtResource("6_q4yph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftCeiling/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_csrox")
@@ -119,10 +119,10 @@ scale = Vector2(36.5, 1)
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/RightCeiling"]
 scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_1v1nj")
-texture = ExtResource("2_1v1nj")
+texture = ExtResource("4_1phrr")
 
 [node name="CharacterBody2D" type="StaticBody2D" parent="Walls/RightCeiling"]
-physics_material_override = ExtResource("5_kcpg1")
+physics_material_override = ExtResource("6_q4yph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightCeiling/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_csrox")
@@ -135,27 +135,27 @@ scale = Vector2(27, 1)
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/RightSideWall"]
 scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_1v1nj")
-texture = ExtResource("2_1v1nj")
+texture = ExtResource("4_1phrr")
 
 [node name="CharacterBody2D" type="StaticBody2D" parent="Walls/RightSideWall"]
-physics_material_override = ExtResource("5_kcpg1")
+physics_material_override = ExtResource("6_q4yph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightSideWall/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_csrox")
 
-[node name="DeathBarrier" parent="." instance=ExtResource("7_xrytr")]
+[node name="DeathBarrier" parent="." instance=ExtResource("7_g8vyv")]
 position = Vector2(0, 1000)
 scale = Vector2(1000, 50)
 
 [node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("7_cs8mb")
+script = ExtResource("8_oah82")
 
 [node name="P1_Score" type="Label" parent="HUD"]
 offset_left = 100.0
 offset_top = 75.0
 offset_right = 141.0
 offset_bottom = 159.0
-theme_override_fonts/font = ExtResource("8_xrytr")
+theme_override_fonts/font = ExtResource("9_w2nuc")
 theme_override_font_sizes/font_size = 64
 text = "0"
 
@@ -168,7 +168,7 @@ offset_top = 75.0
 offset_right = -100.0
 offset_bottom = 159.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("8_xrytr")
+theme_override_fonts/font = ExtResource("9_w2nuc")
 theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 2
@@ -185,7 +185,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("8_xrytr")
+theme_override_fonts/font = ExtResource("9_w2nuc")
 theme_override_font_sizes/font_size = 72
 
 [connection signal="fallen_p1_side" from="DeathBarrier" to="." method="_on_ball_fallen_p1_side"]
