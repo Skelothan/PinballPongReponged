@@ -4,7 +4,7 @@ signal fallen_p1_side
 signal fallen_p2_side
 
 
-func start(pos):
+func start(_pos):
 	reset_collision()
 
 

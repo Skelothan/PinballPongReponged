@@ -18,7 +18,7 @@ gradient = ExtResource("3_glji8")
 motion_mode = 1
 script = ExtResource("1_6vb5h")
 
-[node name="LeftFlipper" type="CharacterBody2D" parent="."]
+[node name="LeftFlipper" type="CharacterBody2D" parent="." groups=["Paddle"]]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFlipper"]
@@ -32,7 +32,7 @@ scale = Vector2(27, 6)
 mesh = SubResource("BoxMesh_ujhtd")
 texture = ExtResource("2_glji8")
 
-[node name="RightFlipper" type="CharacterBody2D" parent="."]
+[node name="RightFlipper" type="CharacterBody2D" parent="." groups=["Paddle"]]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightFlipper"]

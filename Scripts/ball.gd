@@ -25,3 +25,15 @@ func reset(x: float, y: float):
 		PhysicsServer2D.BODY_STATE_ANGULAR_VELOCITY,
 		Transform2D.IDENTITY.translated(Vector2(0, 0))
 	)
+
+
+func _on_body_entered(body):
+	print("Ping!")
+	if body.is_in_group("Wall"):
+		$SFX/HitWall.play()
+	elif body.is_in_group("Paddle"):
+		$SFX/HitPaddle.play()
+
+
+func explode():
+	$SFX/Explode.play()

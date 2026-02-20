@@ -23,6 +23,7 @@ func reset_game():
 
 
 func _on_ball_fallen_p1_side():
+	$Ball.explode()
 	p2_score += 1
 	$HUD.update_score(2, p2_score)
 	if p1_score >= points_to_win:
@@ -34,6 +35,7 @@ func _on_ball_fallen_p1_side():
 
 
 func _on_ball_fallen_p2_side():
+	$Ball.explode()
 	p1_score += 1
 	$HUD.update_score(1, p1_score)
 	if p1_score >= points_to_win:

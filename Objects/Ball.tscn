@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgunkbo2tyaa6"]
+[gd_scene load_steps=10 format=3 uid="uid://cgunkbo2tyaa6"]
 
 [ext_resource type="Script" uid="uid://3dukdq8rvi35" path="res://Scripts/ball.gd" id="1_lww6v"]
 [ext_resource type="PhysicsMaterial" uid="uid://dlnub6vjg6dpk" path="res://PhysicsMaterials/Bouncy.phymat.tres" id="1_w66na"]
 [ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/PlainWhite.texture.tres" id="2_3tj6u"]
+[ext_resource type="AudioStream" uid="uid://jkc2um62wjeg" path="res://SFX/pong_ping_e4.wav" id="4_5mxvf"]
+[ext_resource type="AudioStream" uid="uid://cs6gnfw7y57e7" path="res://SFX/pong_ping_a4.wav" id="5_uc724"]
+[ext_resource type="AudioStream" uid="uid://coj8jsyyis6i1" path="res://SFX/pong_ball_explode.wav" id="6_0e3dj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oly7h"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_sr3km"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqwa6"]
+radius = 11.0
 
 [node name="Ball" type="RigidBody2D"]
 collision_layer = 2
@@ -21,3 +27,21 @@ position = Vector2(-4.76837e-07, 2.86102e-06)
 scale = Vector2(20.0227, 20)
 mesh = SubResource("SphereMesh_sr3km")
 texture = ExtResource("2_3tj6u")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="HitWall" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_5mxvf")
+
+[node name="HitPaddle" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_uc724")
+
+[node name="Explode" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_0e3dj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yqwa6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
