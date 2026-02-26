@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://ob0lbhmds5ll"]
+[gd_scene load_steps=9 format=3 uid="uid://ob0lbhmds5ll"]
 
 [ext_resource type="Script" uid="uid://cg0p2quhgpyit" path="res://Scripts/paddle.gd" id="1_6vb5h"]
+[ext_resource type="PhysicsMaterial" uid="uid://1ogpdqh183yc" path="res://PhysicsMaterials/Paddle.phymat.tres" id="2_cxnwh"]
 [ext_resource type="Texture2D" uid="uid://um1xqr0vgw0y" path="res://Textures/PaddleP1L.texture.tres" id="2_glji8"]
 [ext_resource type="Gradient" uid="uid://nv1745k5nnaw" path="res://Textures/PaddleP1R.gradient.tres" id="3_glji8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjhxm"]
-size = Vector2(27, 36)
+size = Vector2(31, 36)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ujhtd"]
 
@@ -14,12 +15,13 @@ size = Vector2(27, 36)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_n20g4"]
 gradient = ExtResource("3_glji8")
 
-[node name="Paddle" type="CharacterBody2D"]
-motion_mode = 1
+[node name="Paddle" type="Node2D"]
 script = ExtResource("1_6vb5h")
 
-[node name="LeftFlipper" type="CharacterBody2D" parent="." groups=["Paddle"]]
+[node name="LeftFlipper" type="AnimatableBody2D" parent="." groups=["Paddle"]]
 collision_mask = 2
+physics_material_override = ExtResource("2_cxnwh")
+sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFlipper"]
 position = Vector2(-13.5, 1.5)
@@ -32,8 +34,10 @@ scale = Vector2(27, 6)
 mesh = SubResource("BoxMesh_ujhtd")
 texture = ExtResource("2_glji8")
 
-[node name="RightFlipper" type="CharacterBody2D" parent="." groups=["Paddle"]]
+[node name="RightFlipper" type="AnimatableBody2D" parent="." groups=["Paddle"]]
 collision_mask = 2
+physics_material_override = ExtResource("2_cxnwh")
+sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightFlipper"]
 position = Vector2(13.5, 1.5)

@@ -101,6 +101,10 @@ p2_flip_both={
 ]
 }
 
+[physics]
+
+2d/solver/solver_iterations=32
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

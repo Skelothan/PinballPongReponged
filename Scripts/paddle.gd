@@ -1,9 +1,9 @@
-extends CharacterBody2D
+extends Node2D
 
 @export var move_speed = 500
 
-var left_flipper: CharacterBody2D
-var right_flipper: CharacterBody2D
+var left_flipper: AnimatableBody2D
+var right_flipper: AnimatableBody2D
 @export var flip_speed = 500
 ## Flip angle in degrees
 @export var flip_angle = 45.0
