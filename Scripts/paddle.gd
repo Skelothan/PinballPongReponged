@@ -27,29 +27,29 @@ func _ready():
 
 func _input(event):
 	if player == 1:
-		if event.is_action_pressed("p1_flip_left") and not left_flipper_flipped:
+		if (event.is_action_pressed("p1_flip_left") or event.is_action_pressed("p1_flip_both")) and not left_flipper_flipped:
 			left_flipper_flipped = true
 			left_flipper_rotation_direction = 1
-		if event.is_action_pressed("p1_flip_right") and not right_flipper_flipped:
+		if (event.is_action_pressed("p1_flip_right") or event.is_action_pressed("p1_flip_both")) and not right_flipper_flipped:
 			right_flipper_flipped = true
 			right_flipper_rotation_direction = -1
-		if event.is_action_released("p1_flip_left") and left_flipper_flipped:
+		if (event.is_action_released("p1_flip_left") or event.is_action_released("p1_flip_both")) and left_flipper_flipped:
 			left_flipper_flipped = false
 			left_flipper_rotation_direction = -1
-		if event.is_action_released("p1_flip_right") and right_flipper_flipped:
+		if (event.is_action_released("p1_flip_right")  or event.is_action_released("p1_flip_both")) and right_flipper_flipped:
 			right_flipper_flipped = false
 			right_flipper_rotation_direction = 1
 	elif player == 2:
-		if event.is_action_pressed("p2_flip_left") and not left_flipper_flipped:
+		if (event.is_action_pressed("p2_flip_left") or event.is_action_pressed("p2_flip_both")) and not left_flipper_flipped:
 			left_flipper_flipped = true
 			left_flipper_rotation_direction = 1
-		if event.is_action_pressed("p2_flip_right") and not right_flipper_flipped:
+		if (event.is_action_pressed("p2_flip_right") or event.is_action_pressed("p2_flip_both")) and not right_flipper_flipped:
 			right_flipper_flipped = true
 			right_flipper_rotation_direction = -1
-		if event.is_action_released("p2_flip_left") and left_flipper_flipped:
+		if (event.is_action_released("p2_flip_left") or event.is_action_released("p2_flip_both")) and left_flipper_flipped:
 			left_flipper_flipped = false
 			left_flipper_rotation_direction = -1
-		if event.is_action_released("p2_flip_right") and right_flipper_flipped:
+		if (event.is_action_released("p2_flip_right") or event.is_action_released("p2_flip_both")) and right_flipper_flipped:
 			right_flipper_flipped = false
 			right_flipper_rotation_direction = 1
 
