@@ -31,7 +31,7 @@ func _on_ball_fallen_p1_side():
 	$Ball.explode()
 	p2_score += 1
 	$HUD.update_score(2, p2_score)
-	if p1_score >= points_to_win:
+	if p2_score >= points_to_win:
 		end_game(2)
 	else:
 		$HUD.display_message("Player %d scores!" % 2)
