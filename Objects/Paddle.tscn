@@ -5,7 +5,7 @@
 [ext_resource type="Gradient" uid="uid://nv1745k5nnaw" path="res://Textures/PaddleP1R.gradient.tres" id="3_glji8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjhxm"]
-size = Vector2(27, 24)
+size = Vector2(27, 36)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ujhtd"]
 
@@ -22,7 +22,7 @@ script = ExtResource("1_6vb5h")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFlipper"]
-position = Vector2(-13.5, 0)
+position = Vector2(-13.5, 1.5)
 scale = Vector2(1, 0.25)
 shape = SubResource("RectangleShape2D_rjhxm")
 
@@ -36,7 +36,7 @@ texture = ExtResource("2_glji8")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightFlipper"]
-position = Vector2(13.5, 0)
+position = Vector2(13.5, 1.5)
 scale = Vector2(1, 0.25)
 shape = SubResource("RectangleShape2D_rjhxm")
 
