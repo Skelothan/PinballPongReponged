@@ -33,6 +33,8 @@ func _on_body_entered(body):
 		$SFX/HitWall.play()
 	elif body.is_in_group("Paddle"):
 		$SFX/HitPaddle.play()
+	elif body.is_in_group("Net"):
+		$SFX/HitNet.play()
 
 
 func explode():

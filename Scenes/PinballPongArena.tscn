@@ -12,15 +12,15 @@
 [ext_resource type="Script" uid="uid://cyi5lpv2dbhu7" path="res://Scripts/hud.gd" id="8_oah82"]
 [ext_resource type="FontFile" uid="uid://co71jcuy2guxq" path="res://Fonts/AtkinsonHyperlegibleNext-VariableFont_wght.ttf" id="9_w2nuc"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_35c7g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n068f"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbtuc"]
 height = 38.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yokb4"]
 size = Vector2(20, 1351)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_35c7g"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_n068f"]
 
 [sub_resource type="GDScript" id="GDScript_to8ph"]
 
@@ -59,19 +59,10 @@ texture = ExtResource("4_kogr8")
 position = Vector2(0, -75)
 zoom = Vector2(1.2, 1.2)
 
-[node name="Net" type="Node2D" parent="."]
+[node name="Net" type="StaticBody2D" parent="." groups=["Net"]]
 position = Vector2(0, 200)
-
-[node name="CharacterBody2D" type="StaticBody2D" parent="Net"]
 collision_mask = 2
 physics_material_override = ExtResource("3_ydwt1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Net/CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_pbtuc")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Net/CharacterBody2D"]
-position = Vector2(0, 684.5)
-shape = SubResource("RectangleShape2D_yokb4")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Net"]
 position = Vector2(0, 1)
@@ -83,6 +74,13 @@ position = Vector2(4.76837e-07, 107)
 scale = Vector2(20, 196)
 mesh = SubResource("BoxMesh_n068f")
 texture = ExtResource("4_1phrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Net"]
+shape = SubResource("CapsuleShape2D_pbtuc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Net"]
+position = Vector2(0, 684.5)
+shape = SubResource("RectangleShape2D_yokb4")
 
 [node name="Ball" parent="." groups=["Ball"] instance=ExtResource("5_kogr8")]
 position = Vector2(250, 2004)

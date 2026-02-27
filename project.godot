@@ -26,6 +26,7 @@ window/stretch/aspect="keep_width"
 
 Paddle=""
 Wall=""
+Net=""
 
 [input]
 
