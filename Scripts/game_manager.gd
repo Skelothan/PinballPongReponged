@@ -24,6 +24,9 @@ func reset_game():
 	$HUD.update_score(1, p1_score)
 	$HUD.update_score(2, p2_score)
 	
+	$BackgroundMusic.stop()
+	$BackgroundMusic.play()
+	
 	reset_round()
 
 

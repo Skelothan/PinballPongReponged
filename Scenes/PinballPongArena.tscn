@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0uxhpt30u2gu"]
+[gd_scene load_steps=22 format=3 uid="uid://c0uxhpt30u2gu"]
 
 [ext_resource type="Script" uid="uid://dm04dnkydmo1c" path="res://Scripts/game_manager.gd" id="1_to8ph"]
 [ext_resource type="PackedScene" uid="uid://ob0lbhmds5ll" path="res://Objects/Paddle.tscn" id="2_32u68"]
 [ext_resource type="Texture2D" uid="uid://bkst26yx6grvb" path="res://Textures/Background.texture.tres" id="2_kogr8"]
+[ext_resource type="AudioStream" uid="uid://ddnlt0ubpj7tc" path="res://Music/pinball_pong_music.wav" id="2_q4yph"]
 [ext_resource type="Texture2D" uid="uid://duir510p7sfve" path="res://Textures/PaddleP2L.texture.tres" id="3_1phrr"]
 [ext_resource type="PhysicsMaterial" uid="uid://bvsbech3efyyx" path="res://PhysicsMaterials/Net.phymat.tres" id="3_ydwt1"]
 [ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/PlainWhite.texture.tres" id="4_1phrr"]
@@ -33,6 +34,10 @@ size = Vector2(20.8864, 41.2251)
 
 [node name="PinballPongArena" type="Node2D"]
 script = ExtResource("1_to8ph")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_q4yph")
+volume_db = -1.5
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
