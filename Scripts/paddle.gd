@@ -20,6 +20,7 @@ var right_flipper_flipped = false
 var left_flipper_rotation_direction = 0
 var right_flipper_rotation_direction = 0
 
+
 func _ready():
 	left_flipper = get_node("LeftFlipper")
 	right_flipper = get_node("RightFlipper")
