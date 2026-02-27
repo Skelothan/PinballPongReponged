@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0uxhpt30u2gu"]
+[gd_scene load_steps=20 format=3 uid="uid://c0uxhpt30u2gu"]
 
 [ext_resource type="Script" uid="uid://dm04dnkydmo1c" path="res://Scripts/game_manager.gd" id="1_to8ph"]
 [ext_resource type="PackedScene" uid="uid://ob0lbhmds5ll" path="res://Objects/Paddle.tscn" id="2_32u68"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cbbucpis28ynt" path="res://Objects/DeathBarrier.tscn" id="7_g8vyv"]
 [ext_resource type="Script" uid="uid://cyi5lpv2dbhu7" path="res://Scripts/hud.gd" id="8_oah82"]
 [ext_resource type="FontFile" uid="uid://co71jcuy2guxq" path="res://Fonts/AtkinsonHyperlegibleNext-VariableFont_wght.ttf" id="9_w2nuc"]
+[ext_resource type="PackedScene" uid="uid://cnbuchq5amwep" path="res://Objects/Bumper.tscn" id="12_1phrr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_35c7g"]
 
@@ -82,7 +83,7 @@ shape = SubResource("CapsuleShape2D_pbtuc")
 position = Vector2(0, 684.5)
 shape = SubResource("RectangleShape2D_yokb4")
 
-[node name="Ball" parent="." groups=["Ball"] instance=ExtResource("5_kogr8")]
+[node name="Ball" parent="." instance=ExtResource("5_kogr8")]
 position = Vector2(250, 2004)
 
 [node name="Walls" type="Node2D" parent="."]
@@ -203,6 +204,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_w2nuc")
 theme_override_font_sizes/font_size = 72
+
+[node name="LeftBumper" parent="." instance=ExtResource("12_1phrr")]
+position = Vector2(-485, -200)
+
+[node name="RightBumper" parent="." instance=ExtResource("12_1phrr")]
+position = Vector2(485, -200)
+
+[node name="TopBumper" parent="." instance=ExtResource("12_1phrr")]
+position = Vector2(0, -380)
 
 [connection signal="fallen_p1_side" from="DeathBarrier" to="." method="_on_ball_fallen_p1_side"]
 [connection signal="fallen_p2_side" from="DeathBarrier" to="." method="_on_ball_fallen_p2_side"]

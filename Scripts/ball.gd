@@ -30,13 +30,14 @@ func reset(x: float, y: float):
 
 
 func _on_body_entered(body):
-	print("Ping!")
 	if body.is_in_group("Wall"):
 		$SFX/HitWall.play()
 	elif body.is_in_group("Paddle"):
 		$SFX/HitPaddle.play()
 	elif body.is_in_group("Net"):
 		$SFX/HitNet.play()
+	elif body.is_in_group("Bumper"):
+		$SFX/HitBumper.play()
 
 
 func explode():

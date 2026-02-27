@@ -13,7 +13,6 @@ func reset_collision():
 
 
 func _on_body_entered(body: PhysicsBody2D):
-	print("Body ", body, " entered the death barrier")
 	if body.position.x > 0:
 		fallen_p2_side.emit()
 	else:

@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnbuchq5amwep"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dlnub6vjg6dpk" path="res://PhysicsMaterials/Bouncy.phymat.tres" id="1_wrnij"]
+[ext_resource type="Script" uid="uid://ca31cbf87ai20" path="res://Scripts/bumper.gd" id="2_xaert"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ofcpt"]
+
+[sub_resource type="Gradient" id="Gradient_wrnij"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.986752, 0.986752, 0.986752, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xaert"]
+gradient = SubResource("Gradient_wrnij")
+
+[sub_resource type="Gradient" id="Gradient_8lkkx"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.992157, 0.631373, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7ygve"]
+gradient = SubResource("Gradient_8lkkx")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x28uk"]
+radius = 51.0392
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xaert"]
+radius = 53.0377
+
+[node name="Bumper" type="StaticBody2D" groups=["Bumper"]]
+physics_material_override = ExtResource("1_wrnij")
+script = ExtResource("2_xaert")
+
+[node name="OuterCircle" type="MeshInstance2D" parent="."]
+scale = Vector2(100, 100)
+mesh = SubResource("SphereMesh_ofcpt")
+texture = SubResource("GradientTexture1D_xaert")
+
+[node name="Spokes1" type="Polygon2D" parent="."]
+scale = Vector2(2, 2)
+color = Color(0.890196, 0, 0, 1)
+polygon = PackedVector2Array(0, -25, 5, -5, 25, 0, 5, 5, 0, 25, -5, 5, -25, 0, -5, -5)
+
+[node name="Spokes2" type="Polygon2D" parent="."]
+rotation = 0.523599
+scale = Vector2(2, 2)
+color = Color(0.890196, 0, 0, 1)
+polygon = PackedVector2Array(0, -25, 5, -5, 25, 0, 5, 5, 0, 25, -5, 5, -25, 0, -5, -5)
+
+[node name="Spokes3" type="Polygon2D" parent="."]
+rotation = 1.0472
+scale = Vector2(2, 2)
+color = Color(0.890196, 0, 0, 1)
+polygon = PackedVector2Array(0, -25, 5, -5, 25, 0, 5, 5, 0, 25, -5, 5, -25, 0, -5, -5)
+
+[node name="InnerCircle" type="MeshInstance2D" parent="."]
+scale = Vector2(50, 50)
+mesh = SubResource("SphereMesh_ofcpt")
+texture = SubResource("GradientTexture1D_7ygve")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x28uk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xaert")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

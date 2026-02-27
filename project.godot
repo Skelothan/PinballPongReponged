@@ -27,6 +27,8 @@ window/stretch/aspect="keep_width"
 Paddle=""
 Wall=""
 Net=""
+Bumper=""
+Ball=""
 
 [input]
 
