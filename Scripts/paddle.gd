@@ -55,7 +55,7 @@ func _input(event):
 			right_flipper_rotation_direction = 1
 
 
-func _process(delta):
+func _physics_process(delta):
 	var velocity = Vector2.ZERO
 	
 	if player == 1:
@@ -83,6 +83,5 @@ func _process(delta):
 			
 		
 	if velocity.length() > 0:
-		#position.x += velocity.x * delta
 		position.x += velocity.x * delta
 		position.x = clampf(position.x, left_bound, right_bound)
