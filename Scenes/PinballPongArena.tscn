@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0uxhpt30u2gu"]
+[gd_scene load_steps=19 format=3 uid="uid://c0uxhpt30u2gu"]
 
 [ext_resource type="Script" uid="uid://dm04dnkydmo1c" path="res://Scripts/game_manager.gd" id="1_to8ph"]
 [ext_resource type="PackedScene" uid="uid://ob0lbhmds5ll" path="res://Objects/Paddle.tscn" id="2_32u68"]
+[ext_resource type="Texture2D" uid="uid://duir510p7sfve" path="res://Textures/PaddleP2L.texture.tres" id="3_1phrr"]
 [ext_resource type="PhysicsMaterial" uid="uid://bvsbech3efyyx" path="res://PhysicsMaterials/Net.phymat.tres" id="3_ydwt1"]
 [ext_resource type="Texture2D" uid="uid://bxgbgb8xsavo3" path="res://Textures/PlainWhite.texture.tres" id="4_1phrr"]
+[ext_resource type="Texture2D" uid="uid://bodwosm2413is" path="res://Textures/PaddleP2R.texture.tres" id="4_kogr8"]
 [ext_resource type="PackedScene" uid="uid://cgunkbo2tyaa6" path="res://Objects/Ball.tscn" id="5_kogr8"]
 [ext_resource type="PhysicsMaterial" uid="uid://dlnub6vjg6dpk" path="res://PhysicsMaterials/Bouncy.phymat.tres" id="6_q4yph"]
 [ext_resource type="PackedScene" uid="uid://cbbucpis28ynt" path="res://Objects/DeathBarrier.tscn" id="7_g8vyv"]
@@ -46,6 +48,12 @@ flip_angle = 30.0
 player = 2
 left_bound = 100.0
 right_bound = 450.0
+
+[node name="MeshInstance2D" parent="P2_Paddle/LeftFlipper" index="1"]
+texture = ExtResource("3_1phrr")
+
+[node name="MeshInstance2D" parent="P2_Paddle/RightFlipper" index="1"]
+texture = ExtResource("4_kogr8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -75)
@@ -200,3 +208,5 @@ theme_override_font_sizes/font_size = 72
 
 [connection signal="fallen_p1_side" from="DeathBarrier" to="." method="_on_ball_fallen_p1_side"]
 [connection signal="fallen_p2_side" from="DeathBarrier" to="." method="_on_ball_fallen_p2_side"]
+
+[editable path="P2_Paddle"]
