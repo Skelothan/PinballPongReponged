@@ -106,7 +106,7 @@ p2_flip_both={
 
 [physics]
 
-2d/solver/solver_iterations=32
+2d/solver/solver_iterations=48
 
 [rendering]
 
