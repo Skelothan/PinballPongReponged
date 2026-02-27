@@ -6,7 +6,7 @@
 [ext_resource type="Gradient" uid="uid://nv1745k5nnaw" path="res://Textures/PaddleP1R.gradient.tres" id="3_glji8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjhxm"]
-size = Vector2(31, 36)
+size = Vector2(31, 48)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ujhtd"]
 
@@ -24,7 +24,7 @@ physics_material_override = ExtResource("2_cxnwh")
 sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFlipper"]
-position = Vector2(-13.5, 1.5)
+position = Vector2(-13, 3)
 scale = Vector2(1, 0.25)
 shape = SubResource("RectangleShape2D_rjhxm")
 
@@ -40,7 +40,7 @@ physics_material_override = ExtResource("2_cxnwh")
 sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightFlipper"]
-position = Vector2(13.5, 1.5)
+position = Vector2(13, 3)
 scale = Vector2(1, 0.25)
 shape = SubResource("RectangleShape2D_rjhxm")
 
