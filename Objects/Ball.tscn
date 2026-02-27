@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgunkbo2tyaa6"]
+[gd_scene load_steps=12 format=3 uid="uid://cgunkbo2tyaa6"]
 
 [ext_resource type="Script" uid="uid://3dukdq8rvi35" path="res://Scripts/ball.gd" id="1_lww6v"]
 [ext_resource type="PhysicsMaterial" uid="uid://dlnub6vjg6dpk" path="res://PhysicsMaterials/Bouncy.phymat.tres" id="1_w66na"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cs6gnfw7y57e7" path="res://SFX/pong_ping_a4.wav" id="5_uc724"]
 [ext_resource type="AudioStream" uid="uid://coj8jsyyis6i1" path="res://SFX/pong_ball_explode.wav" id="6_0e3dj"]
 [ext_resource type="AudioStream" uid="uid://c1junqlbhyji1" path="res://SFX/pong_ping_e3.wav" id="7_5mxvf"]
+[ext_resource type="PackedScene" uid="uid://bqgx8syj57a20" path="res://Objects/Trail.tscn" id="8_uc724"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oly7h"]
 
@@ -26,7 +27,7 @@ shape = SubResource("CircleShape2D_oly7h")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(-4.76837e-07, 2.86102e-06)
-scale = Vector2(20.0227, 20)
+scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_sr3km")
 texture = ExtResource("2_3tj6u")
 
@@ -43,6 +44,9 @@ stream = ExtResource("6_0e3dj")
 
 [node name="HitNet" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("7_5mxvf")
+
+[node name="Trail" parent="." instance=ExtResource("8_uc724")]
+width = 20.0
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -9,6 +9,8 @@ func _integrate_forces(state):
 
 
 func reset(x: float, y: float):
+	$Trail.disable()
+	$Trail.clear_trail()
 	PhysicsServer2D.body_set_state(
 		self.get_rid(),
 		PhysicsServer2D.BODY_STATE_TRANSFORM,
@@ -24,6 +26,7 @@ func reset(x: float, y: float):
 		PhysicsServer2D.BODY_STATE_ANGULAR_VELOCITY,
 		Transform2D.IDENTITY.translated(Vector2(0, 0))
 	)
+	$Trail.enable()
 
 
 func _on_body_entered(body):
