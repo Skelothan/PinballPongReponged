@@ -12,6 +12,10 @@ func update_score(player: int, score: int):
 		$P2_Score.text = str(score)
 
 
+func update_ball_score(score: int):
+	$BallScore.text = str(score)
+
+
 func display_message(message: String):
 	$GameMessage.text = message
 	$GameMessage.show()

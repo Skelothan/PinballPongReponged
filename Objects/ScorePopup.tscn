@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dictj8u1oxa0c"]
+
+[ext_resource type="Script" uid="uid://crv4tprbma4fs" path="res://Scripts/score_popup.gd" id="1_x71cv"]
+[ext_resource type="FontFile" uid="uid://co71jcuy2guxq" path="res://Fonts/AtkinsonHyperlegibleNext-VariableFont_wght.ttf" id="2_d0ir6"]
+
+[node name="ScorePopup" type="Node2D"]
+script = ExtResource("1_x71cv")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0.964014, 0.74638, 1)
+theme_override_fonts/font = ExtResource("2_d0ir6")
+theme_override_font_sizes/font_size = 24
+text = "+0"
+horizontal_alignment = 1

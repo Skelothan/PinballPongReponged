@@ -34,6 +34,7 @@ size = Vector2(20.8864, 41.2251)
 
 [node name="PinballPongArena" type="Node2D"]
 script = ExtResource("1_to8ph")
+points_to_win = 5000
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_q4yph")
@@ -41,7 +42,7 @@ volume_db = -1.5
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
-position = Vector2(-1.7643e-05, -75)
+position = Vector2(-9.53674e-05, -100)
 scale = Vector2(25, 14.0625)
 texture = ExtResource("2_kogr8")
 
@@ -71,7 +72,7 @@ texture = ExtResource("3_1phrr")
 texture = ExtResource("4_kogr8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -75)
+position = Vector2(0, -100)
 zoom = Vector2(1.2, 1.2)
 
 [node name="Net" type="StaticBody2D" parent="." groups=["Net"]]
@@ -99,6 +100,7 @@ shape = SubResource("RectangleShape2D_yokb4")
 
 [node name="Ball" parent="." instance=ExtResource("5_kogr8")]
 position = Vector2(250, 2004)
+bumper_score = 150
 
 [node name="Walls" type="Node2D" parent="."]
 position = Vector2(0, 200)
@@ -202,6 +204,19 @@ theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 2
 
+[node name="BallScore" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.5
+offset_right = 20.5
+offset_bottom = 84.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("9_w2nuc")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+
 [node name="GameMessage" type="Label" parent="HUD"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -226,6 +241,7 @@ position = Vector2(485, -200)
 [node name="TopBumper" parent="." instance=ExtResource("12_1phrr")]
 position = Vector2(0, -380)
 
+[connection signal="ball_score_updated" from="Ball" to="." method="_on_ball_score_updated"]
 [connection signal="fallen_p1_side" from="DeathBarrier" to="." method="_on_ball_fallen_p1_side"]
 [connection signal="fallen_p2_side" from="DeathBarrier" to="." method="_on_ball_fallen_p2_side"]
 

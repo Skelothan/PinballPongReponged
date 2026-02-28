@@ -51,6 +51,7 @@ stream = ExtResource("7_5mxvf")
 stream = ExtResource("8_0e3dj")
 
 [node name="Trail" parent="." instance=ExtResource("8_uc724")]
+points = PackedVector2Array()
 width = 20.0
 
 [node name="Area2D" type="Area2D" parent="."]

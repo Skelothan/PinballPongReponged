@@ -4,7 +4,7 @@ extends Node2D
 
 var p1_score = 0
 var p2_score = 0
-@export var points_to_win = 10
+@export var points_to_win = 10000
 @export var reset_round_delay = 4
 
 
@@ -32,7 +32,7 @@ func reset_game():
 
 func _on_ball_fallen_p1_side():
 	$Ball.explode()
-	p2_score += 1
+	p2_score += $Ball.score
 	$HUD.update_score(2, p2_score)
 	if p2_score >= points_to_win:
 		end_game(2)
@@ -44,7 +44,7 @@ func _on_ball_fallen_p1_side():
 
 func _on_ball_fallen_p2_side():
 	$Ball.explode()
-	p1_score += 1
+	p1_score += $Ball.score
 	$HUD.update_score(1, p1_score)
 	if p1_score >= points_to_win:
 		end_game(1)
@@ -83,5 +83,5 @@ func reset_round(serving_player=-1):
 	$HUD.clear_message()
 
 
-func _on_death_barrier_fallen_p2_side() -> void:
-	pass # Replace with function body.
+func _on_ball_score_updated() -> void:
+	$HUD.update_ball_score($Ball.score)
