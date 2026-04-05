@@ -1,0 +1,6 @@
+[gd_resource type="GradientTexture1D" load_steps=2 format=3 uid="uid://ow1ckphoxrx4"]
+
+[ext_resource type="Gradient" uid="uid://c430bo8r3o2nv" path="res://Textures/PointWall.gradient.tres" id="1_skha1"]
+
+[resource]
+gradient = ExtResource("1_skha1")
